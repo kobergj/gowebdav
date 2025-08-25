@@ -161,6 +161,10 @@ All contributing are welcome. If you have any suggestions or find some bug - ple
 
 ## License
 This library is distributed under the BSD 3-Clause license found in the [LICENSE](https://github.com/studio-b12/gowebdav/blob/master/LICENSE) file.
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/studio-b12/gowebdav.svg?variant=adaptive)](https://starchart.cc/studio-b12/gowebdav)
+
 ## API
 
 `import "github.com/studio-b12/gowebdav"`
@@ -340,7 +344,7 @@ type AuthFactory func(c *http.Client, rs *http.Response, path string) (auth Auth
 ```
 AuthFactory prototype function to create a new Authenticator
 
-### <a name="Authenticator">type</a> [Authenticator](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=2155:2695#L56)
+### <a name="Authenticator">type</a> [Authenticator](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=2156:2696#L56)
 ``` go
 type Authenticator interface {
     // Authorizes a request. Usually by adding some authorization headers.
@@ -354,7 +358,7 @@ type Authenticator interface {
     io.Closer
 }
 ```
-A Authenticator implements a specific way to authorize requests.
+An Authenticator implements a specific way to authorize requests.
 Each request is bound to a separate Authenticator instance.
 
 The authentication flow itself is broken down into `Authorize`
@@ -412,7 +416,7 @@ type Authorizer interface {
 Authorizer our Authenticator factory which creates an
 `Authenticator` per action/request.
 
-#### <a name="NewAutoAuth">func</a> [NewAutoAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=3789:3845#L109)
+#### <a name="NewAutoAuth">func</a> [NewAutoAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=3790:3846#L109)
 ``` go
 func NewAutoAuth(login string, secret string) Authorizer
 ```
@@ -422,7 +426,7 @@ based on the order of the registered Authenticators
 and the remotely offered authentication methods.
 First In, First Out.
 
-#### <a name="NewEmptyAuth">func</a> [NewEmptyAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=4694:4724#L132)
+#### <a name="NewEmptyAuth">func</a> [NewEmptyAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=4695:4725#L132)
 ``` go
 func NewEmptyAuth() Authorizer
 ```
@@ -431,7 +435,7 @@ The order of adding the Authenticator matters.
 First In, First Out.
 It offers the `NewAutoAuth` features.
 
-#### <a name="NewPreemptiveAuth">func</a> [NewPreemptiveAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=5300:5353#L148)
+#### <a name="NewPreemptiveAuth">func</a> [NewPreemptiveAuth](https://github.com/studio-b12/gowebdav/blob/master/auth.go?s=5301:5354#L148)
 ``` go
 func NewPreemptiveAuth(auth Authenticator) Authorizer
 ```
@@ -621,7 +625,7 @@ func (c *Client) Write(path string, data []byte, _ os.FileMode) (err error)
 ```
 Write writes data to a given path
 
-#### <a name="Client.WriteStream">func</a> (\*Client) [WriteStream](https://github.com/studio-b12/gowebdav/blob/master/client.go?s=9771:9857#L419)
+#### <a name="Client.WriteStream">func</a> (\*Client) [WriteStream](https://github.com/studio-b12/gowebdav/blob/master/client.go?s=9807:9893#L419)
 ``` go
 func (c *Client) WriteStream(path string, stream io.Reader, _ os.FileMode) (err error)
 ```
@@ -642,19 +646,19 @@ func (d *DigestAuth) Authorize(c *http.Client, rq *http.Request, path string) er
 ```
 Authorize the current request
 
-#### <a name="DigestAuth.Clone">func</a> (\*DigestAuth) [Clone](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1228:1270#L49)
+#### <a name="DigestAuth.Clone">func</a> (\*DigestAuth) [Clone](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1303:1345#L54)
 ``` go
 func (d *DigestAuth) Clone() Authenticator
 ```
 Clone creates a copy of itself
 
-#### <a name="DigestAuth.Close">func</a> (\*DigestAuth) [Close](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1142:1176#L44)
+#### <a name="DigestAuth.Close">func</a> (\*DigestAuth) [Close](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1217:1251#L49)
 ``` go
 func (d *DigestAuth) Close() error
 ```
 Close cleans up all resources
 
-#### <a name="DigestAuth.String">func</a> (\*DigestAuth) [String](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1466:1502#L58)
+#### <a name="DigestAuth.String">func</a> (\*DigestAuth) [String](https://github.com/studio-b12/gowebdav/blob/master/digestAuth.go?s=1541:1577#L63)
 ``` go
 func (d *DigestAuth) String() string
 ```
